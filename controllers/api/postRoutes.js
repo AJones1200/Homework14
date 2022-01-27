@@ -14,7 +14,25 @@ router.post('/', async (req, res) => {
   }
 });
 
-//insert put here to update post 
+router.put('/:id', async (req, res) => {
+console.log('putRoute')
+  try {
+    const postUpdate = await Post.update(
+      req.body,{
+      where: {
+        id: req.params.id,
+        user_id: req.session.user_id,
+      },
+    });
+    if (!postUpdate) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+  res.status(200).json(postUpdate);
+} catch (err) {
+  res.status(400).json(err);
+};
+})
 
 
 router.delete('/:id', async (req, res) => {

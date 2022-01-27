@@ -22,7 +22,7 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
+  if (event.target.hasAttribute('data-id')&& event.target.innerHTML === 'DELETE') {
     const id = event.target.getAttribute('data-id');
 
     const response = await fetch(`/api/posts/${id}`, {
@@ -34,7 +34,17 @@ const delButtonHandler = async (event) => {
     } else {
       alert('Failed to delete post');
     }
-  }
+  } else if (event.target.hasAttribute('data-id')&& event.target.innerHTML === 'EDIT') {
+    const id = event.target.getAttribute('data-id'); 
+    const response = await fetch (`/post/edit/${id}`, {
+      method: 'GET',
+    });
+    if (response.ok) {
+      document.location.replace(`/post/edit/${id}`);
+    } else {
+      alert('Failed to find post');
+    }
+  console.log(response)}
 };
 
 document
