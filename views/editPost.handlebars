@@ -1,4 +1,4 @@
-    <form class="form edit-post-form">
+    <form class="form edit-post-form" data-id="{{post.id}}">
       <div class="form-group">
         <label for="post-title">post title:</label>
         <input value="{{post.title}}" class="form-input" type="text" id="post-title" />
@@ -11,3 +11,5 @@
         <button id="updateBtn" type="submit" class="btn btn-primary">Update</button>
       </div>
     </form>
+
+    <script src="/js/editpost.js"></script>
