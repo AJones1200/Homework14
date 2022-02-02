@@ -2,5 +2,23 @@
   <h2>{{title}}</h2>
   <p>{{content}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
- 
+{{#each comments as |comment| }}
+<div class="row mb-4 post">
+  <div class="col-md-5">
+    <p>
+      {{comment.body}}
+    </p>
+
+    <p>Created by {{comment.user.name}}</p>
+  </div>
+</div>
+{{/each}}
+{{#if logged_in}}
+<textarea>
+  
+</textarea>
+<button>Submit</button>
+        {{/if}}
+
+
 </div>
