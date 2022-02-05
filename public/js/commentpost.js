@@ -1,13 +1,15 @@
 const commentPostHandler = async (event) => {
     event.preventDefault();
-    console.log('click');
     const comment = document.querySelector('#commentText').value.trim();
+    const id = document.querySelector('textarea[name="inputField"]').value
+    console.log('click', comment, id);
+
     await fetch("/api/comments", {
         method: "Post",
         body: JSON.stringify({comment})
     })
 
-    document.location.reload();
+    // document.location.reload();
   };
 
   document
