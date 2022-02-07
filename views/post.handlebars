@@ -2,24 +2,28 @@
   <h2>{{title}}</h2>
   <p>{{content}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
-{{#each comments as |comment| }}
-<div class="row mb-4 post">
-  <div class="col-md-5">
-    <p>
-      {{comment.body}}
-    </p>
+  {{#each comments as |comment| }}
+  <div class="row mb-4 post">
+    <div class="col-md-5">
+      <p>
+        {{comment.body}}
+      </p>
 
-    <p>Created by {{comment.user.name}}</p>
+      <p>Created by {{comment.user.name}}</p>
+    </div>
   </div>
-</div>
-{{/each}}
-{{#if logged_in}}
-<textarea id="commentText" value= "{{id}}" name= 'inputField'>
-  
-</textarea>
-<button id="commentSubmitBtn">Comment</button>
-        {{/if}}
+  {{/each}}
+  {{#if logged_in}}
+  <form class="form create-comment">
+    <div class="form-group">
+      <textarea id="commentText" value="{{id}}" name='inputField'></textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" id="commentSubmitBtn">Comment</button>
+    </div>
+  </form>
+  {{/if}}
 
-<script src="/js/commentpost.js"></script>
+  <script src="/js/commentpost.js"></script>
 
 </div>
